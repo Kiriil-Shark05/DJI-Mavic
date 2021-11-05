@@ -17,6 +17,7 @@
   <body>
 
     <div class="wrapper">
+
       <header class="header">
         <div class="header__wrapper">
           <div class="header__img">
@@ -44,8 +45,9 @@
         </div>
       </header>
 
-
-      <section class="fullscreen" id="fullscreen">
+      <div class="page">
+      <div class="page__wrapper">
+        <section class="fullscreen page__screen screen" id="fullscreen">
         <div class="fullscreen__body">
           <div class="fullscreen__main">
             <h1 class="fullscreen__title">Mavic 2 Pro</h1>
@@ -81,7 +83,7 @@
           </a>
       </section>
 
-      <section class="fullscreen fullscreen-about">
+      <section class="fullscreen fullscreen-about page__screen screen">
         <div class="fullscreen-about__body body _container">
           <div class="fulllscreen-about__main">
             <h1 class="fullscreen-about__title title">Что такое Mavic 2 Pro?</h1>
@@ -99,7 +101,7 @@
               <div class="swiper-wrapper">
                 <div class="swiper-slide swiper-slide_1">
                   <div class="swiper-slide__img">
-                    <img src="img/fullscreen-about/01.png" alt="">
+                    <img src="img/fullscreen-about/04.png" alt="">
                     <img src="img/fullscreen-about/02.png" alt="">
                     </div>
                     <div class="swiper-slide__text">Лучшая беспилотная технология аэросъемки</div>
@@ -115,7 +117,7 @@
 
                <div class="swiper-slide swiper-slide_3">
                   <div class="swiper-slide__img">
-                    <img src="img/fullscreen-about/05.png" alt="">
+                    <img src="img/fullscreen-about/04.png" alt="">
                     <img src="img/fullscreen-about/02.png" alt="">
                     </div>
                     <div class="swiper-slide__text">Автопереключение между частотами 2,4 и 5,8 ГГц</div>
@@ -134,7 +136,7 @@
           </a>
       </section>
 
-      <section class="fullscreen fullscreen-advantages">
+      <section class="fullscreen fullscreen-advantages page__screen screen">
         <div class="fullscreen-advantages__body body _container">
 
             <h2 class="fullscreen-advantages__title title">Преимущества</h2>
@@ -215,7 +217,7 @@
           </a>
       </section>
 
-      <section class="fullscreen fullscreen-specifications">
+      <section class="fullscreen fullscreen-specifications page__screen screen">
         <div class="fullscreen-specifications__body body _container">
           <h2 class="fullscreen-specifications__title title">Характеристики</h2>
 
@@ -277,7 +279,7 @@
           </a>
       </section>
 
-    <section class="fullscreen fullscreen-questions">
+    <section class="fullscreen fullscreen-questions page__screen screen">
       <div class="fullscreen-questions__body body _container">
       <h2 class="fullscreen-questions__title title">Остались вопросы?</h2>
       <div data-spollers data-one-spoller class="block">
@@ -336,7 +338,7 @@
         </a>
     </section>
 
-    <footer class="fullscreen fullscreen-footer">
+    <footer class="fullscreen fullscreen-footer page__screen screen">
       <div class="fullscreen-footer__body body _container">
       <h2 class="fullscreen-footer__title title">Контакты</h2>
       <div class="fullscreen-footer__content content">
@@ -419,11 +421,15 @@
       </div>
     </div>
     </footer>
+    </div>
+    <div class="page__scroll"></div>
+    </div>
   </div>
 
     <script src="js/spoller.js"></script>
     <script src="js/header.js"></script>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="js/general-swiper-settings.js"></script>
     <script src="js/swiper-settings.js"></script>
   </body>
   </html>
