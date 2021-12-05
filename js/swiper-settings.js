@@ -1,4 +1,4 @@
-new Swiper('.swiper-container', {
+let imgSlider = new Swiper('.slider-conatiner', {
 
 	navigation: {
 		nextEl: '.swiper-button-next',
@@ -20,7 +20,7 @@ new Swiper('.swiper-container', {
 	effect: 'fade',
 
 	fadeEffect: {
-		crossFade: true
+		crossFade: true,
 	},
 
 });

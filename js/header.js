@@ -1,3 +1,17 @@
+
+let body2 = document.querySelector('body');
+
+let headerMenu = document.querySelector('.header__menu');
+
+let headerBurger = document.querySelector('.header__burger');
+
+headerBurger.addEventListener("click", function() {
+  headerMenu.classList.toggle('_active');
+  headerBurger.classList.toggle('_active');
+  body2.classList.toggle('_lock');
+});
+
+
 // 'use strict'
 
 
