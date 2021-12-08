@@ -1059,14 +1059,42 @@ textarea.form__input {
 /***********************MEDIA**************************/
 
 
-
-/*************HEADER************/
-
 @media (max-width: 1214px) {
   body {
     font-size: 15px;
   }
 }
+
+@media (max-width: 1180px) {
+.swiper-slide__text {
+  font-size: 20px;
+  line-height: 23px;
+  left: -130px;
+}
+
+.swiper-slide__img {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.swiper-slide__img img {
+  width: 85%;
+}
+
+.swiper-slide__img img:last-child {
+  position: absolute;
+  left: 100px;
+}
+
+}
+
+@media (max-width: 1126px) {
+  .title {
+    font-size: 40px;
+  }
+}
+
 
 @media (max-width: 1112px) {
 
