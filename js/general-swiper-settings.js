@@ -65,6 +65,10 @@ window.addEventListener("resize", function (e) {
 		SliderDestroyBool = false;
 		pageSlider.init();
 	}
+
+	if (window.innerWidth == breakpoint) {
+		location.reload();
+	}
 });
 
 document.addEventListener("DOMContentLoaded", function (e) {
