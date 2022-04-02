@@ -360,6 +360,7 @@ function setScrollType() {
 		if (window.innerHeight <= 680) {
 			wrapper.classList.add('_free');
 			pageSlider.params.freeMode = true;
+			// SliderDestroy();
 		}
 }
 

@@ -1544,8 +1544,13 @@ body._lock {
 }
 
 .block__title div:first-child span {
-    margin-right: 41px;
+    margin-right: 0;
 }
+
+.block__title div:first-child {
+    padding: 20px 78px 24px 19px;
+}
+
 
 .fullscreen-specifications__title {
   margin-left: -14px;
@@ -1572,7 +1577,7 @@ body._lock {
 }
 
   .block {
-    margin: 0px 41px 0px -29px;
+    margin: 0px -36px 0px -26px;
 }
 
 .block__text {
@@ -1671,6 +1676,19 @@ body._lock {
 
   .fullscreen-advantages__img img:nth-child(2) {
     margin-right: 27px;
+}
+
+.block__title div:first-child {
+    padding: 19px 76px 19px 13px;
+}
+
+.block__title div:last-child {
+    width: 66px;
+    height: 65px;
+}
+
+.block__text {
+    padding: 0px 82px 35px 24px;
 }
 
 
