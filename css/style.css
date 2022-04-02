@@ -833,18 +833,24 @@ button {
 }
 
 .block__title div:first-child {
+  flex: 0 0 auto;
   font-weight: 500;
   font-size: 21px;
   line-height: 28px;
   opacity: 0.9;
   text-align: left;
+  width: 100%;
   max-width: 690px;
-  min-width: 690px;
   padding: 20px 20px 24px 39px;
   background-color: rgba(0, 0, 0, 0.3)
 }
 
+.block__title div:first-child span {
+  margin-right: 20px;
+}
+
 .block__title div:last-child {
+  flex: 0 0 auto;
   width: 67px;
   height: 72px;
   display: flex;
@@ -862,15 +868,19 @@ button {
 }
 
 .block__text {
+  flex: 0 1 auto;
+  width: 100%;
   max-width: 690px;
-  min-width: 690px;
-  max-width: 660px;
   padding: 0px 10px 75px 50px;
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 .block div:nth-child(3) {
  position: relative;
+}
+
+.fullscreen-questions__img {
+  display: block;
 }
 
 .fullscreen-questions__img img {
@@ -1066,14 +1076,9 @@ textarea.form__input {
 
 
 @media (max-width: 1291px) {
-  .fullscreen-advantages__description_4 {
+  .fullscreen-advantages__description_4, .fullscreen-advantages__description_2 {
     max-width: 232px;
 }
-
-  .fullscreen-advantages__description_2 {
-    max-width: 232px;
-}
-
 
 .fullscreen-advantages__row {
   justify-content: space-between;
@@ -1101,7 +1106,6 @@ textarea.form__input {
 }
 
 .fullscreen-advantages__line_1 {
-  position: absolute;
   top: 30px;
   right: -137px;
   width: 60%;
@@ -1112,7 +1116,6 @@ textarea.form__input {
 }
 
 .fullscreen-advantages__line_3 {
-  position: absolute;
   top: 31px;
   right: -191px;
   width: 69%;
@@ -1161,8 +1164,11 @@ textarea.form__input {
     max-width: 230px;
 }
 
+.fullscreen-questions__img img {
+  right: -283px;
+}
+
 .fullscreen-advantages__line_1 {
-  position: absolute;
   top: 33px;
   right: -159px;
   width: 60%;
@@ -1249,10 +1255,6 @@ body._lock {
 .header__burger._active span {
   transform: scale(0);
 }
-
-/*.header {
-  height: 100%;
-}*/
 
 .header__menu {
   position: fixed;
@@ -1387,16 +1389,8 @@ body._lock {
   align-items: flex-start;
 }
 
-.fullscreen-advantages__subtitle_2 {
+.fullscreen-advantages__subtitle_2, .fullscreen-advantages__description, .fullscreen-advantages__img {
   max-width: none;
-}
-
-.fullscreen-advantages__description {
-  max-width: none;
-}
-
-.fullscreen-advantages__img {
-  max-height: none;
 }
 
 .fullscreen-advantages__img img:nth-child(2) {
@@ -1443,6 +1437,34 @@ body._lock {
   max-width: 400px;
 }
 
+.fullscreen-questions {
+  padding: 68px 0px 75px 0px;
+}
+
+
+.fullscreen-questions__img {
+  display: none;
+}
+
+.block__title div:first-child {
+  padding: 20px 20px 24px 19px;
+}
+
+.block__text {
+  padding: 0px 10px 56px 33px;
+}
+
+}
+
+@media (max-width: 880px) {
+/*.block__title div:last-child {
+    margin-left: -67px;
+    z-index: 999;
+}
+*/
+.block__text {
+    padding: 0px 82px 56px 33px;
+}
 
 }
 
@@ -1456,7 +1478,34 @@ body._lock {
     padding: 52px 0px 12px 5px;
 }
 
+  .block {
+    margin: 0px 74px 0px 3px;
 }
+
+}
+
+@media (max-width: 816px) {
+  .fullscreen__title {
+    font-size: 80px;
+  }
+
+  .fullscreen-advantages {
+    padding: 52px 0px 12px 5px;
+}
+
+}
+
+/*@media (max-width: 747px) {
+  .fullscreen-questions__body {
+    padding: 0px 34px 0px 34px;
+  }
+
+}
+*/
+
+
+
+
 
 @media (max-width: 722px) {
   .slider {
@@ -1482,11 +1531,28 @@ body._lock {
 }
 
 .fullscreen-specifications {
-    padding: 57px 0px 46px 0px;
+  padding: 57px 0px 46px 0px;
+}
+
+.fullscreen-questions {
+  padding: 57px 0px 75px 0px;
+}
+
+.block__title div:last-child {
+    margin-left: -67px;
+    z-index: 999;
+}
+
+.block__title div:first-child span {
+    margin-right: 41px;
 }
 
 .fullscreen-specifications__title {
   margin-left: -14px;
+}
+
+.fullscreen-questions__title {
+  margin-left: -44px;
 }
 
 .text {
@@ -1504,6 +1570,15 @@ body._lock {
 .fullscreen-specifications__body {
   padding: 0px 30px 0px 30px;
 }
+
+  .block {
+    margin: 0px 41px 0px -29px;
+}
+
+.block__text {
+    padding: 0px 82px 35px 33px;
+}
+
 
 }
 
@@ -1558,6 +1633,10 @@ body._lock {
 @media (max-width: 550px) {
   .fullscreen-advantages, .fullscreen-specifications {
     padding: 52px 0px 12px 0px;
+}
+
+  .fullscreen-questions {
+    padding: 52px 0px 45px 0px;
 }
 
   .fullscreen-advantages__row {
@@ -1693,6 +1772,10 @@ body._lock {
   padding: 38px 0px 12px 0px;
 }
 
+.fullscreen-questions {
+  padding: 38px 0px 42px 0px;
+}
+
 .fullscreen-advantages__title {
   margin-bottom: 45px;
 }
@@ -1720,6 +1803,10 @@ body._lock {
 
 .fullscreen-advantages, .fullscreen-specifications {
     padding: 24px 0px 12px 0px;
+}
+
+.fullscreen-questions {
+    padding: 24px 0px 42px 0px;
 }
 
 }
