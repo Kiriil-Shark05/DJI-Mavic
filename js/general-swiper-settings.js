@@ -13,6 +13,8 @@ let pageSlider = null;
 
 let SliderDestroyBool = false;
 
+let breakpoint = 1112;
+
 const animItems = document.querySelectorAll('._anim-items');
 
 const anchors = document.querySelectorAll('a[href*="#"]')
@@ -44,8 +46,6 @@ window.addEventListener("DOMMouseScroll", function (e) {
 
 window.addEventListener("resize", function (e) {
 
-	let breakpoint = 1112;
-
 	if (window.innerWidth <= breakpoint) {
 		wrapper.classList.add('_loaded');
 		page.classList.add('_mobile');
@@ -66,9 +66,13 @@ window.addEventListener("resize", function (e) {
 		pageSlider.init();
 	}
 
-	if (window.innerWidth == breakpoint) {
+	if ((window.innerWidth > (breakpoint - 20)) && (window.innerWidth < breakpoint)) {
 		location.reload();
 	}
+});
+
+window.addEventListener("orientationchange", function() {
+		location.reload();
 });
 
 document.addEventListener("DOMContentLoaded", function (e) {
