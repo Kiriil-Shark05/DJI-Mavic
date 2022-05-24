@@ -1783,15 +1783,15 @@ body._lock {
 
 .fullscreen-about__title {
   margin-bottom: 5px;
-  margin-left: -15px;
+  margin-left: -11px;
 }
 
 .fullscreen-about {
   padding: 100px 0px 90px 0px;
 }
 
-.fullscreen-about__body {
-  padding: 0px 30px 0px 30px;
+.fullscreen-about__body, .fullscreen-specifications__body {
+  padding: 0px 20px 0px 20px;
 }
 
 .fullscreen-advantages, .fullscreen-specifications {
@@ -1804,6 +1804,19 @@ body._lock {
 
 .fullscreen-advantages__title {
   margin-bottom: 45px;
+}
+
+.fullscreen-specifications__title {
+  margin-left: -9px;
+}
+
+.fullscreen-questions__body {
+    padding: 0px 51px 0px 51px;
+}
+
+
+.fullscreen-questions__title {
+    margin-left: -42px;
 }
 
 }
@@ -1873,6 +1886,17 @@ body._lock {
   .title {
     font-size: 28px;
   }
+
+
+.block__title div:last-child {
+    width: 53px;
+    height: 52px;
+    margin-left: -54px;
+}
+
+.fullscreen-questions__title {
+    margin-bottom: 29px;
+}
 }
 
 @media (max-width: 346px) {
@@ -1887,6 +1911,10 @@ body._lock {
   .title {
     font-size: 28px;
   }
+
+  .block__title div:first-child {
+    font-size: 20px;
+}
 }
 
 
@@ -1903,8 +1931,11 @@ body._lock {
     font-size: 27px;
   }
 
+.block__title div:first-child {
+    font-size: 19px;
+}
 
-
+}
 
 
 @media (max-width: 330px) {
