@@ -9,6 +9,8 @@ let body = document.querySelector('.body');
 
 let page = document.querySelector('.page');
 
+// let fullscreen = document.getElementById('fullscreen');
+
 let pageSlider = null;
 
 let SliderDestroyBool = false;
@@ -17,18 +19,35 @@ let breakpoint = 1112;
 
 const animItems = document.querySelectorAll('._anim-items');
 
-const anchors = document.querySelectorAll('a[href*="#"]')
+const anchors = document.querySelectorAll('a[href*="#"]');
 
+// fullscreen.addEventListener('scroll', (event) => {
+//     console.log('it working perfect');
+// });
 
+// window.addEventListener('DOMMouseScroll', function(e) {
 
-window.addEventListener("DOMMouseScroll", function (e) {
+// 	console.log("fsd");
+// 	// let currentScroll = window.pageYOffset;
 
+// 	// if (currentScroll > initialScroll) {
+// 	// 	console.log("scroll top");
+// 	// } else {
+// 	// 	console.log("scroll down");
+// 	// }
+// });
+
+window.addEventListener("scroll", function (e) {
+	
 	let breakpoint = 1112;
+
+	console.log('dfdf');
 
 	if (window.innerWidth <= breakpoint) {
 		wrapper.classList.add('_loaded');
 		page.classList.add('_mobile');
 		wrapper.classList.add('_mobile');
+		console.log('dsdf');
 		SliderDestroy();
 		animation();
 		SliderDestroyBool = true;
@@ -45,6 +64,7 @@ window.addEventListener("DOMMouseScroll", function (e) {
 
 
 window.addEventListener("resize", function (e) {
+
 
 	if (window.innerWidth <= breakpoint) {
 		wrapper.classList.add('_loaded');

@@ -29,10 +29,10 @@ dd {
   margin: 0;
 }
 
-body {
+/*body {
   background: url('../img/vector1.png') 100% 24% no-repeat;
 }
-
+*/
 
 body, html {
   margin: 0 auto;
@@ -42,6 +42,7 @@ body, html {
   width: 100%; 
   max-width: 100%;
   overflow-x: hidden;
+  /*scroll-behavior: revert-layer;*/
 }
 
 .wrapper {
@@ -1019,7 +1020,7 @@ button {
 }
 
 .form__input:first-child {
-  margin-right: 6px;
+  margin-right: 11px;
 }
 
 textarea.form__input {
@@ -1572,6 +1573,16 @@ body._lock {
     padding: 52px 0px 12px 5px;
 }
 
+.form__item_1 {
+    flex-wrap: wrap;
+}
+
+.form__input:first-child {
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+}
+
 }
 
 @media (max-width: 785px) {
@@ -1680,6 +1691,22 @@ body._lock {
   margin-left: -12px;
 }
 
+
+}
+
+@media (max-width: 692px) {
+  .fullscreen-footer__item_1 {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.contacts__description {
+    max-width: 210px;
+}
+
+.contacts__text {
+    margin-right: 0;
+}
 
 }
 
@@ -1831,6 +1858,14 @@ body._lock {
     margin-top: 100px;
     display: flex;
     justify-content: center;
+}
+
+.fullscreen-footer__item_1 {
+    margin: 0;
+}
+
+.contacts__description {
+    max-width: 203px;
 }
 
 }
