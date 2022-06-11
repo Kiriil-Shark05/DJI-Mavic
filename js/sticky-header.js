@@ -1,92 +1,172 @@
 
+
+// Custom mobile scroll event 
+
 'use strict'
 
-let lastScroll = 0;
-
-let currentScroll;
-
-let movesArray = [];
+let movesArrayY = [];
 
 let countMovesIterations = 0;
 
-let coefficient1 = 15; // частота опроса мув иветнта
+let frequencyCoefficient = 18; // 18 was polling frequency of the touchmove event (used as a filter)
 
-let coefficient2 = 1; // число, которое отвечает за распознование верикального и горизонтального скролла
+let duplicatesCoefficient = 1; // number of duplicates in the touchYArray (used to detect vertical scrolling)
+
+let filtrationCoefficient1 = 10;
+
+let filtrationCoefficient2 = 70;
 
 // Провести рефакторинг
 
 // разобраться с пушем на гитхаб
 
-// возможно запихать эьто всё в кастомный ивент
+// возможно запихать это всё в кастомный ивент
+
+// решить проблем, связанную с тем, что при определённом угле событие скролла срабартывает, а скролл не идёт ещё на таком угле
 
 let touchYArray = [];
 
-let movesId = 0;
+let touchXArray = [];
 
-document.addEventListener("touchstart", e => {
+let anglesArray = [];
 
-});
+let angle;
 
 document.addEventListener("touchmove", e => {
 
-    touchYArray.push(e.changedTouches[0].clientY)
+    touchYArray.push(e.changedTouches[0].clientY);
 
-    if ((countMovesIterations % coefficient1) == 0) {
+    touchXArray.push(e.changedTouches[0].clientX);
 
-        let toFindVerticalScroll = touchYArray => touchYArray.filter((item, index) => touchYArray.indexOf(item) !== index) // переписать в более удобную форму
+    if ((countMovesIterations % frequencyCoefficient) == 0) { // the condition that sets a polling frequency of the touchmove event
 
-    // touchYArray.filter((item, index) => {
-    //     return touchYArray.indexOff(item);
-    // });
+        let triangleHypotenuse, triangleCathet; // variables for recognizing the scroll at the angle
+
+        if (touchXArray[frequencyCoefficient - 1] > touchXArray[0]) { // determing the cathet and hypotenuse of the triangle formed by user finger
+            triangleHypotenuse = touchXArray[frequencyCoefficient - 1] - touchXArray[0];
+        } else {
+            triangleHypotenuse = touchXArray[0] - touchXArray[frequencyCoefficient - 1];
+        }
+
+        if (touchYArray[frequencyCoefficient - 1] > touchYArray[0]) { 
+            triangleCathet = touchYArray[frequencyCoefficient - 1] - touchYArray[0];
+        } else {
+            triangleCathet = touchYArray[0] - touchYArray[frequencyCoefficient - 1];
+        }
+
+        angle = Math.asin((triangleCathet / triangleHypotenuse)) * 57.2958; // finding the angle is formed by user finger
+
+        let filteredAnglesArray = [];
+
+        // anglesArray.forEach(index => {
+        //     const item = anglesArray[index];
+
+        //     if (!(item - filtrationCoefficient1 > filtrationCoefficient2)) {
+        //         filteredAnglesArray.push(item);
+        //     }
+        // });
+
+        for (let index = 0; index < anglesArray.length; index++) {
+            const item = anglesArray[index];
+            if (((item - filtrationCoefficient1) < filtrationCoefficient2)) {
+                filteredAnglesArray.push(item);
+            }
+        }
+
+        console.log(filteredAnglesArray);
+
+
+        let anglesSum = filteredAnglesArray.reduce((a, b) => {
+            return a + b;
+        }, 0);
+
+        let arithmeticMeanOfAngles = anglesSum / filteredAnglesArray.length;
+
+
+
+        // for (let index = 0; index < anglesArray.length; index++) {
+        //     const item = anglesArray[index];
+        //     console.log(item);
+        // }
+
+
+
+        // anglesArray.forEach(item => {
+        //     console.log(anglesArray[index]);
+        // })
+
+        // console.log(anglesArray);
+
+        // console.log(angle);
+
+
+        // anglesArray.push(angle);
+
+        let toFindVerticalScroll = (touchYArray) => { // finding a number of duplicates in the touchYArray (used to detect vertical scrolling)
+            return touchYArray.filter((item, index) => {
+                touchYArray.indexOf(item) !== index;
+            });
+        }
 
         let verticalScrollArray = toFindVerticalScroll(touchYArray);
 
-        let duplicateCount = verticalScrollArray.length;
+        let duplicateCountY = verticalScrollArray.length;
 
-        if (duplicateCount < coefficient2) {
-            console.log("vertical scroll");
+        if ((duplicateCountY < duplicatesCoefficient) && (((arithmeticMeanOfAngles >= 48)) || (isNaN(arithmeticMeanOfAngles))))  { // the condition that detects vertical scrolling (for this it uses the number of duplicates in touchYArray and the angle that formed by user's finger)
+
+            let directionOfScroll;
+
+            if (touchYArray[frequencyCoefficient - 1] > touchYArray[0]) { // determing the scrolling direction
+                directionOfScroll = "scroll up";
+            } else {
+                directionOfScroll = "scroll down";
+            }
+
+            const customMobileScrollEvent = new CustomEvent("custom:mobileScroll", { // creating a custom event to detect mobile scrolling
+                bubless: true,
+                cancelable: false,
+                composed: true,
+                detail: {
+                    directionOfScroll,
+                },
+            });
+
+            document.dispatchEvent(customMobileScrollEvent);
+
         }
 
-        movesArray.push(duplicateCount);
+        movesArrayY.push(duplicateCountY);
+
+        // zeroing variables
+
+        // console.log(touchYArray);
 
         touchYArray = [];
 
+        touchXArray = [];
+
         verticalScrollArray = [];
 
-        duplicateCount = [];
+        duplicateCountY = [];
 
-        // console.log(movesArray);
+        anglesArray = [];
+
 }
 
-
-    // console.log(touchYArray);
-
+anglesArray.push(angle);
 
 
-    // console.log("Move");
 
-    // currentScroll = e.changedTouches[0].clientY;
+// increase the countMovesIterations variable
 
-    // if ((currentScroll - lastScroll) > 5) {
-    //     console.log("scroll up");
-    // } else if (((currentScroll - lastScroll) < 5)) {
-    //     console.log("scroll down");
-    // }
-
-    // lastScroll = currentScroll;
-
-   
-    countMovesIterations = countMovesIterations + 1;
-
+countMovesIterations = countMovesIterations + 1;
 
 });
 
-document.addEventListener("touchend", e => {
 
-    // function touchYArray() {
-    //     touchYArray.filter((item, index) => {
-    //         return touchYArray.indexOff(item);
-    //     });
-    // };
 
+document.addEventListener("custom:mobileScroll", e => {
+    // console.log(e.detail.directionOfScroll);
+
+    console.log("scroll");
 });
