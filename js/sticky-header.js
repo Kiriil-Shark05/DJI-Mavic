@@ -8,7 +8,9 @@ let movesArrayY = [];
 
 let countMovesIterations = 0;
 
-let frequencyCoefficient = 18; // 18 was polling frequency of the touchmove event (used as a filter)
+let anglesIterations = 0;
+
+let frequencyCoefficient = 5; // 18 was polling frequency of the touchmove event (used as a filter)
 
 let duplicatesCoefficient = 1; // number of duplicates in the touchYArray (used to detect vertical scrolling)
 
@@ -56,51 +58,9 @@ document.addEventListener("touchmove", e => {
 
         angle = Math.asin((triangleCathet / triangleHypotenuse)) * 57.2958; // finding the angle is formed by user finger
 
-        let filteredAnglesArray = [];
-
-        // anglesArray.forEach(index => {
-        //     const item = anglesArray[index];
-
-        //     if (!(item - filtrationCoefficient1 > filtrationCoefficient2)) {
-        //         filteredAnglesArray.push(item);
-        //     }
-        // });
-
-        for (let index = 0; index < anglesArray.length; index++) {
-            const item = anglesArray[index];
-            if (((item - filtrationCoefficient1) < filtrationCoefficient2)) {
-                filteredAnglesArray.push(item);
-            }
-        }
-
-        console.log(filteredAnglesArray);
-
-
-        let anglesSum = filteredAnglesArray.reduce((a, b) => {
-            return a + b;
-        }, 0);
-
-        let arithmeticMeanOfAngles = anglesSum / filteredAnglesArray.length;
-
-
-
-        // for (let index = 0; index < anglesArray.length; index++) {
-        //     const item = anglesArray[index];
-        //     console.log(item);
-        // }
-
-
-
-        // anglesArray.forEach(item => {
-        //     console.log(anglesArray[index]);
-        // })
-
-        // console.log(anglesArray);
+        anglesIterations = anglesIterations + 1; // used to correctly detect scrolling
 
         // console.log(angle);
-
-
-        // anglesArray.push(angle);
 
         let toFindVerticalScroll = (touchYArray) => { // finding a number of duplicates in the touchYArray (used to detect vertical scrolling)
             return touchYArray.filter((item, index) => {
@@ -112,7 +72,7 @@ document.addEventListener("touchmove", e => {
 
         let duplicateCountY = verticalScrollArray.length;
 
-        if ((duplicateCountY < duplicatesCoefficient) && (((arithmeticMeanOfAngles >= 48)) || (isNaN(arithmeticMeanOfAngles))))  { // the condition that detects vertical scrolling (for this it uses the number of duplicates in touchYArray and the angle that formed by user's finger)
+        if ((duplicateCountY < duplicatesCoefficient) && ((((angle >= 51) && (angle < 90))) || (isNaN(angle))) && (anglesIterations > 1))  { // the condition that detects vertical scrolling (for this it uses the number of duplicates in touchYArray and the angle that formed by user's finger)
 
             let directionOfScroll;
 
@@ -166,7 +126,7 @@ countMovesIterations = countMovesIterations + 1;
 
 
 document.addEventListener("custom:mobileScroll", e => {
-    // console.log(e.detail.directionOfScroll);
+    console.log(e.detail.directionOfScroll);
 
-    console.log("scroll");
+    // console.log("scroll");
 });
