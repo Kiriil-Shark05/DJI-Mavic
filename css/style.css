@@ -194,6 +194,10 @@ button {
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.header._disable {
+  opacity: 0;
+}
+
 .header__wrapper {
   display: flex;
   justify-content: space-between;
