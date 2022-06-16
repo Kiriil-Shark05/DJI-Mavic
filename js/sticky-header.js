@@ -2,23 +2,23 @@
 
 // Custom mobile scroll event 
 
-'use strict'
+// 'use strict'
 
-let header1 = document.querySelector(".header");
+let header1 = document.getElementById("header");
+
+// ПОЛНЫЙ РЕФАКТОРИНГ - ЧИСТЫЙ КОД, НОРМАЛЬНЫЕ НАЗВАНИЯ ПЕРЕМЕННЫХ, КОММЕНТАРИИ
+
+let breakpoint2 = 1112;
 
 let countMovesIterations = 0;
 
 let anglesIterations = 0;
 
-let frequencyCoefficient1 = 3; // 18 was polling frequency of the touchmove event (used as a filter)
+let frequencyCoefficient1 = 3; // 18 was    polling frequency of the touchmove event (used as a filter)
 
 let frequencyCoefficient2 = 9; 
 
 let duplicatesCoefficient = 1; // number of duplicates in the touchYArray (used to detect vertical scrolling)
-
-let filtrationCoefficient1 = 10;
-
-let filtrationCoefficient2 = 70;
 
 // Провести рефакторинг
 
@@ -74,7 +74,7 @@ document.addEventListener("touchmove", e => {
         //     });
         // }
 
-        const toFindVerticalScroll = touchYArray => touchYArray.filter((item, index) => touchYArray.indexOf(item) !== index) // finding a number of duplicates in the touchYArray (used to detect vertical scrolling)
+        let toFindVerticalScroll = touchYArray => touchYArray.filter((item, index) => touchYArray.indexOf(item) !== index) // finding a number of duplicates in the touchYArray (used to detect vertical scrolling)
 
         let verticalScrollArray = toFindVerticalScroll(touchYArray);
 
@@ -120,12 +120,12 @@ document.addEventListener("touchmove", e => {
 
 anglesArray.push(angle);
 
-if ((countMovesIterations % frequencyCoefficient2) == 0) {
+if ((countMovesIterations % frequencyCoefficient2) == 0) { // condition used as an additional filter
     // let filteredDirectionOfScroll = directionOfScrollArray[((frequencyCoefficient2 / frequencyCoefficient1) - 1)];
 
-    console.log(`not-filtered`);
+    // console.log(`not-filtered`);
 
-    console.log(directionOfScrollArray);
+    // console.log(directionOfScrollArray);
 
     // let toFindScrollDirection = (directionOfScrollArray) => { // finding a number of duplicates in the touchYArray (used to detect vertical scrolling)
     //     return directionOfScrollArray.filter((item, index) => {
@@ -133,7 +133,7 @@ if ((countMovesIterations % frequencyCoefficient2) == 0) {
     //     });
     // }
 
-    const toFindScrollDirection = directionOfScrollArray => directionOfScrollArray.filter((item, index) => directionOfScrollArray.indexOf(item) !== index);
+    let toFindScrollDirection = directionOfScrollArray => directionOfScrollArray.filter((item, index) => directionOfScrollArray.indexOf(item) !== index);
 
 
     let test = toFindScrollDirection(directionOfScrollArray);
@@ -147,12 +147,12 @@ if ((countMovesIterations % frequencyCoefficient2) == 0) {
         test = test[0];
     }
 
-    console.log(`filtered`);
+    // console.log(`filtered`);
 
-    console.log(test);
+    // console.log(test);
 
 
-                const customMobileScrollEvent = new CustomEvent("custom:mobileScroll", { // creating a custom event to detect mobile scrolling
+    const customMobileScrollEvent = new CustomEvent("custom:mobileScroll", { // creating a custom event to detect mobile scrolling
         bubless: true,
         cancelable: false,
         composed: true,
@@ -161,14 +161,12 @@ if ((countMovesIterations % frequencyCoefficient2) == 0) {
         },
     });
 
-                document.dispatchEvent(customMobileScrollEvent);
+    document.dispatchEvent(customMobileScrollEvent);
 
 
     // let filteredDirectionOfScrollArray = toFindScrollDirection(directionOfScrollArray);
     // console.log(test);
     directionOfScrollArray = [];
-
-
 
 }
 
@@ -181,20 +179,38 @@ countMovesIterations = countMovesIterations + 1;
 
 });
 
+function detectScrollDirection(breakpointBool) {
 
+    if (window.innerWidth <= breakpoint2) {
 
-document.addEventListener("custom:mobileScroll", e => {
-    // console.log(e.detail.test);
+        document.addEventListener("custom:mobileScroll", e => {
+            // console.log(e.detail.test);
 
-    let scrollDirection = e.detail.test;
+            let scrollDirection = e.detail.test;
 
-    if (scrollDirection == "scroll down") {
-        header.classList.remove("_enable");
-        header.classList.add("_disable");
-    } else {
-        header.classList.remove("_disable");
-        header.classList.add("_enable");
+            if (scrollDirection == "scroll down") {
+                // header.classList.remove("_enable");
+                header1.classList.add("_disable");
+            } else {
+                header1.classList.remove("_disable");
+                // header.classList.add("_enable");
+            }
+
+                    // console.log("scroll");
+        });
+
     }
+}
 
-    // console.log("scroll");
-});
+
+
+window.addEventListener("resize", detectScrollDirection());
+window.addEventListener("orientationchange", detectScrollDirection());
+window.addEventListener("DOMContentLoaded", detectScrollDirection());
+
+
+
+
+
+
+

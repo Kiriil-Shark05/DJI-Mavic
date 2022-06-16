@@ -151,7 +151,6 @@ button {
   transform: translate(0px, 0px);
 }
 
-
 ._container {
   max-width: 1276px;
   margin: 0px auto;
@@ -182,6 +181,7 @@ button {
   transform: translate(0px, -100%);
   transition: height 0.8s ease 0s;
   height: 117px;
+  opacity: 1;
 }
 
 .header._active {
@@ -197,6 +197,7 @@ button {
 .header._disable {
   opacity: 0;
 }
+
 
 .header__wrapper {
   display: flex;

@@ -37,29 +37,39 @@ const anchors = document.querySelectorAll('a[href*="#"]');
 // 	// }
 // });
 
-window.addEventListener("scroll", function (e) {
+// function detectTypeOfDevice() {
+// 	if (window.innerWidth <= breakpoint) {
+// 			wrapper.classList.add('_loaded');
+// 			page.classList.add('_mobile');
+// 			wrapper.classList.add('_mobile');
+// 			console.log('dsdf');
+// 			SliderDestroy();
+// 			animation();
+// 			SliderDestroyBool = true;
+// 			menuSliderMobile();
+			
+// 		} else {
+// 			page.classList.remove('_mobile');
+// 			wrapper.classList.remove('_mobile');
+// 			SliderInit();
+// 			SliderDestroyBool = false;
+// 			pageSlider.init();
+// 		}
+// }
+
+
+// window.addEventListener("resize", detectTypeOfDevice());
+// window.addEventListener("orientationchange", detectTypeOfDevice());
+// window.addEventListener("DOMContentLoaded", detectTypeOfDevice());
+
+
+window.addEventListener("scroll", function (e) { // this part of the code is not working right now
 	
 	let breakpoint = 1112;
 
 	console.log('dfdf');
 
-	if (window.innerWidth <= breakpoint) {
-		wrapper.classList.add('_loaded');
-		page.classList.add('_mobile');
-		wrapper.classList.add('_mobile');
-		console.log('dsdf');
-		SliderDestroy();
-		animation();
-		SliderDestroyBool = true;
-		menuSliderMobile();
-		
-	} else {
-		page.classList.remove('_mobile');
-		wrapper.classList.remove('_mobile');
-		SliderInit();
-		SliderDestroyBool = false;
-		pageSlider.init();
-	}
+	
 });
 
 
