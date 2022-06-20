@@ -34,11 +34,13 @@ let angle;
 
 document.addEventListener("touchmove", e => {
 
+    console.log(e);
+
     example.innerHTML = countMovesIterations;
 
-    touchYArray.push(e.changedTouches[0].clientY);
+    touchYArray.push(e.touches[0].clientY);
 
-    touchXArray.push(e.changedTouches[0].clientX);
+    touchXArray.push(e.touches[0].clientX);
 
     if ((countMovesIterations % frequencyCoefficient1) == 0) { // the condition that sets a polling frequency of the touchmove event
 
