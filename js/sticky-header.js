@@ -8,25 +8,19 @@ let header1 = document.getElementById("header");
 
 // ПОЛНЫЙ РЕФАКТОРИНГ - ЧИСТЫЙ КОД, НОРМАЛЬНЫЕ НАЗВАНИЯ ПЕРЕМЕННЫХ, КОММЕНТАРИИ
 
-let breakpoint2 = 1112;
+let breakpoint1 = 1112;
+
+let example = document.querySelector(".fullscreen__title");
 
 let countMovesIterations = 0;
 
 let anglesIterations = 0;
 
-let frequencyCoefficient1 = 3; // 18 was    polling frequency of the touchmove event (used as a filter)
+let frequencyCoefficient1 = 2; // 18 was    polling frequency of the touchmove event (used as a filter)
 
-let frequencyCoefficient2 = 9; 
+let frequencyCoefficient2 = 4; 
 
 let duplicatesCoefficient = 1; // number of duplicates in the touchYArray (used to detect vertical scrolling)
-
-// Провести рефакторинг
-
-// разобраться с пушем на гитхаб
-
-// возможно запихать это всё в кастомный ивент
-
-// решить проблем, связанную с тем, что при определённом угле событие скролла срабартывает, а скролл не идёт ещё на таком угле
 
 let touchYArray = [];
 
@@ -36,11 +30,11 @@ let anglesArray = [];
 
 let directionOfScrollArray = [];
 
-let movesArrayY = [];
-
 let angle;
 
 document.addEventListener("touchmove", e => {
+
+    example.innerHTML = countMovesIterations;
 
     touchYArray.push(e.changedTouches[0].clientY);
 
@@ -96,12 +90,6 @@ document.addEventListener("touchmove", e => {
 
         }
 
-
-
-    
-
-        movesArrayY.push(duplicateCountY);
-
         // zeroing variables
 
         // console.log(touchYArray);
@@ -120,7 +108,7 @@ document.addEventListener("touchmove", e => {
 
 anglesArray.push(angle);
 
-if ((countMovesIterations % frequencyCoefficient2) == 0) { // condition used as an additional filter
+if (((countMovesIterations % frequencyCoefficient2) == 0)) { // condition used as an additional filter
     // let filteredDirectionOfScroll = directionOfScrollArray[((frequencyCoefficient2 / frequencyCoefficient1) - 1)];
 
     // console.log(`not-filtered`);
@@ -179,9 +167,9 @@ countMovesIterations = countMovesIterations + 1;
 
 });
 
-function detectScrollDirection(breakpointBool) {
+function detectScrollDirection() {
 
-    if (window.innerWidth <= breakpoint2) {
+    if (window.innerWidth <= breakpoint1) {
 
         document.addEventListener("custom:mobileScroll", e => {
             // console.log(e.detail.test);
